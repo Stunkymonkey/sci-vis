@@ -25,12 +25,12 @@ for file in files:
     startEnd = np.array([min(xvalues), max(xvalues)])
 
     plt.clf()
-    plt.scatter(data[:, 0], data[:, 1], label="data", color="red")
+    plt.scatter(data[:, 0], data[:, 1], label="Data", color="red")
 
     plt.plot(startEnd, beta2 * startEnd + beta1, label="linear Regression")
-    plt.plot(startEnd, np.array([meany, meany]), label="Mean", linestyle='--')
-    plt.plot(startEnd, np.array([vary, vary]), label="Variancen", linestyle='-.')
-    plt.plot(startEnd, np.array([corrXY, corrXY]), label="Correlation", linestyle=':')
+    plt.plot(startEnd, np.array([meany, meany]), label="Mean: {:,.2f}".format(meany), linestyle='--')
+    plt.plot(startEnd, np.array([vary, vary]), label="Variancen: {:,.2f}".format(vary), linestyle='-.')
+    plt.plot(startEnd, np.array([corrXY, corrXY]), label="Correlation: {:,.2f}".format(corrXY), linestyle=':')
 
     plt.ylabel('y')
     plt.xlabel('x')
