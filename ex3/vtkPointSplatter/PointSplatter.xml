@@ -1,0 +1,32 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="PointSplatter" class="vtkPointSplatter" label="PointSplatter">
+      <Documentation
+          long_help="PointSplatter converts point data to a volumetric representation."
+          short_help="PointSplatter converts point data to a volumetric representation.">
+      </Documentation>
+
+      <InputProperty name="Input" command="SetInputConnection" clean_command="RemoveAllInputs">
+	    <ProxyGroupDomain name="groups">
+	      <Group name="sources" />
+		  <Group name="filters" />
+	    </ProxyGroupDomain>
+		<DataTypeDomain name="input_type">
+		  <DataType value="vtkPolyData" />
+		</DataTypeDomain>
+	  </InputProperty>
+	  
+	  <IntVectorProperty
+	    name="GridResolution"
+		command="SetGridResolution"
+		number_of_elements="3"
+		default_values="32 32 32">
+		<Documentation>Set the resoluation of the used grid.</Documentation>
+	  </IntVectorProperty>
+	  
+	  <Hints>
+	    <ShowInMenu category="Custom"/>
+	  </Hints>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>
