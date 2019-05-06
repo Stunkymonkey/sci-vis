@@ -1,0 +1,45 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="VectorViewer" class="vtkVectorViewer" label="VectorViewer">
+      <Documentation
+         long_help="VectorViewer visualizes attributes of the vector data in an image data block"
+         short_help="Vector field visualization">
+      </Documentation>
+
+      <InputProperty 
+          name="Input"
+         command="SetInputConnection"
+         clean_command="RemoveAllInputs">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources"/>
+          <Group name="filters"/>
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkImageData"/>
+        </DataTypeDomain>
+        <Documentation>
+          VectorViewer documentation
+        </Documentation>
+      </InputProperty>
+      
+      <!--   TODO
+            Insert a drop-down menu that allows the selection of 
+            the wanted visualization method and connect it with the variable "VectorProperty".
+            For more information, have a look at http://www.paraview.org/Wiki/ParaView/Plugin_HowTo
+            
+            The mapping of values is as follows
+            0 : velocity magnitude
+            1 : x component
+            2 : y component
+            3 : z component
+            4 : r component
+            5 : phi component
+            6 : theta component
+       -->
+
+      <Hints>
+        <ShowInMenu category="Custom"/>
+      </Hints>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

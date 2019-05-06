@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 2.8)
+
+IF (ParaView_SOURCE_DIR)
+  INCLUDE_DIRECTORIES(
+    ${VTK_INCLUDE_DIRS}
+  )
+ELSE (ParaView_SOURCE_DIR)
+  FIND_PACKAGE(ParaView REQUIRED)
+  INCLUDE(${PARAVIEW_USE_FILE})
+ENDIF (ParaView_SOURCE_DIR)
+
+ADD_PARAVIEW_PLUGIN(VectorViewer "0.1"
+  SERVER_MANAGER_XML VectorViewer.xml
+  SERVER_MANAGER_SOURCES vtkVectorViewer.cxx
+)
