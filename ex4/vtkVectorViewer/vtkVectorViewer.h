@@ -11,6 +11,8 @@ class vtkVectorViewer : public vtkSimpleImageToImageFilter
   
   // TODO add the get and set macros for VectorProperty
   // Hint: http://www.vtk.org/Wiki/VTK/Examples/Developers/Macros
+  void SetVectorProperty(int index) { VectorProperty = index; }
+  int GetVectorProperty() { return VectorProperty; }
   
   void SimpleExecute(vtkImageData*, vtkImageData*);
  protected:
