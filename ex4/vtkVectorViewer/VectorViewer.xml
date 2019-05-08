@@ -6,10 +6,10 @@
          short_help="Vector field visualization">
       </Documentation>
 
-      <InputProperty 
-          name="Input"
-         command="SetInputConnection"
-         clean_command="RemoveAllInputs">
+      <InputProperty
+        name="Input"
+        command="SetInputConnection"
+        clean_command="RemoveAllInputs">
         <ProxyGroupDomain name="groups">
           <Group name="sources"/>
           <Group name="filters"/>
@@ -36,7 +36,24 @@
             5 : phi component
             6 : theta component
        -->
-
+        <IntVectorProperty
+          name="VectorProperty"
+          command="SetVectorProperty"
+          number_of_elements="1"
+          default_values="2">
+          <EnumerationDomain name="enum">
+            <Entry value="0" text="velocity magnitude"/>
+            <Entry value="1" text="x component"/>
+            <Entry value="2" text="y component"/>
+            <Entry value="3" text="z component"/>
+            <Entry value="4" text="r component"/>
+            <Entry value="5" text="phi component"/>
+            <Entry value="6" text="theta component"/>
+          </EnumerationDomain>
+          <Documentation>
+            wanted visualization method
+          </Documentation>
+        </IntVectorProperty>
       <Hints>
         <ShowInMenu category="Custom"/>
       </Hints>

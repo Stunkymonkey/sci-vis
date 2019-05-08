@@ -18,82 +18,66 @@ void vtkVectorViewer::SimpleExecute(vtkImageData* input, vtkImageData* output) {
   // and: http://www.vtk.org/Wiki/VTK/Examples/Cxx/Utilities/KnownLengthArray
 
   vtkSmartPointer<vtkFloatArray> foo = vtkSmartPointer<vtkFloatArray>::New();
-  foo->SetNumberOfComponents(3);
-  foo->SetNumberOfValues(1);
-  foo->SetNumberOfTuples(input->GetNumberOfPoints());
+  foo->SetName("VeryImportantName");
+  foo->SetNumberOfTuples(1);
+  foo->SetNumberOfComponents(1);
+
+  vtkDataArray* data = input->GetPointData()->GetScalars();
 
   switch(VectorProperty) {
   case 0: // velocity magnitude
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
       // absolute of vector
+      double* scalar = data->GetTuple(i);
+      double mag = std::sqrt(vtkMath::Dot(scalar, scalar));
+      foo->InsertTuple(i, &mag);
     }
     break;
   case 1: // x component
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
-      
+      double* scalar = data->GetTuple(i);
+      foo->InsertTuple(i, &scalar[0]);
     }
     break;
   case 2: // y component
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
-      double result [3];
-      input->GetPoint(i, result);
-      //std::cout << result[0] << ":" << result[1] << ":" << result[2] << std::endl;
-
-      double velo [3];
-      //input->GetPointData(i, velo);
-      vtkPointData* data = input->GetPointData();
-      auto asd = input->GetScalarPointer();
-      float* pixel = static_cast<float*>(asd);
-      /*std::cout << pixel[0] << std::endl;
-      std::cout << pixel[1] << std::endl;
-      std::cout << pixel[2] << std::endl;*/
-
-      /*float* pixel = static_cast<float*>(input->GetScalarPointer(result));
-      pixel[0] = 1.0;
-      pixel[1] = 2.0;
-      */
-
-      //vtkCell* asdf = input->GetCell(i);
-      //std::cout << asdf->GetNumberOfPoints() << std::endl;
-
-
-      //std::cout << data->GetNumberOfArrays() << std::endl;
-      //std::cout << array << std::endl;
-      //std::cout << input->GetPointData()->GetScalars()->GetName() << std::endl;
-      //std::cout << velo[0] << ":" << velo[1] << ":" << velo[2] << std::endl;
-
-      foo->SetTuple3(i, result[0], result[1], result[2]);
-      foo->SetValue(i, vtkMath::Random(0.0,2.0));
-      //foo->InsertTuple (vtkIdType dstTupleIdx, vtkIdType srcTupleIdx);
-      //foo->SetComponent (vtkIdType tupleIdx, int compIdx, double value);
-      //result[2];
+      double* scalar = data->GetTuple(i);
+      foo->InsertTuple(i, &scalar[1]);
     }
     break;
   case 3: // z component
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
-      
+      double* scalar = data->GetTuple(i);
+      foo->InsertTuple(i, &scalar[2]);
     }
     break;
   case 4: // r
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
-      
+      double* scalar = data->GetTuple(i);
+      double mag = std::sqrt(vtkMath::Dot(scalar, scalar));
+      foo->InsertTuple(i, &mag);
     }
     break;
   case 5: // theta
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
-      
+      double* scalar = data->GetTuple(i);
+      double r = atan(scalar[1]/scalar[0]);
+      foo->InsertTuple(i, &r);
     }
     break;
   case 6: // phi
     for(vtkIdType i=0; i<input->GetNumberOfPoints(); i++) {
       // TODO read the relevant values from the input, compute the wanted value and write it to the created array
-      
+      double* scalar = data->GetTuple(i);
+      double r = std::sqrt(vtkMath::Dot(scalar, scalar));
+      double phi = acos(scalar[2]/r);
+      foo->InsertTuple(i, &phi);
     }
     break;
   };
