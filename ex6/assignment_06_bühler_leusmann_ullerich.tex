@@ -30,6 +30,20 @@
 
 \section*{Exercise 6.1}
 
+Figure \ref{fig:triangle} shows a rectangle which consists of two adjacent triangles and a point p. 
+When interpolating this point inside the rectangle, all corners (1 - 4) are considered. 
+But, the colour of point p will be different when interpolating inside the left triangle only the corners 1, 2 and 3 will be considered. 
+There is an even higher difference when point p is near the centre of the rectangle. 
+This effect increases when the triangle has a acute angle, because then the corners ca be far away and therefore the colour will be different. 
+Having a triangulation that satisfies the Delaunay properties may decrease this effect. 
+So in general the triangles are distributed more evenly and the difference of colour is less. 
+
+\begin{figure}[h!]
+	\centering 
+	\includegraphics[width=5cm]{A1.png}
+	\caption{}
+	\label{fig:triangle}
+\end{figure}
 
 \section*{Exercise 6.2}
 
