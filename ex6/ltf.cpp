@@ -113,6 +113,27 @@ std::vector<unsigned char> createTF(unsigned int tf_size, std::vector<std::pair<
     std::vector<unsigned char> tf(tf_size * 3);
 
     // TODO Implement this
+    for (int i = 0; i < tf_size; i++)
+    {
+	    // std::cout << "#" << i << std::endl;
+	    if (i >= samples.at(0).first && i < samples.at(1).first) {
+			int range = samples.at(1).first - samples.at(0).first;
+			float percent_second = i / ((float) range - 1);
+			float percent_first = 1 - percent_second;
+
+			tf.at(i * 3 + 0) = (samples.at(0).second.at(0) * percent_first) + (samples.at(1).second.at(0) * percent_second);
+			tf.at(i * 3 + 1) = (samples.at(0).second.at(1) * percent_first) + (samples.at(1).second.at(1) * percent_second);
+			tf.at(i * 3 + 2) = (samples.at(0).second.at(2) * percent_first) + (samples.at(1).second.at(2) * percent_second);
+	    } else if (i >= samples.at(1).first && i < samples.at(2).first) {
+			int range = samples.at(2).first - samples.at(1).first;
+			float percent_second = (i - samples.at(1).first) / ((float) range - 1);
+			float percent_first = 1 - percent_second;
+
+			tf.at(i * 3 + 0) = (samples.at(1).second.at(0) * percent_first) + (samples.at(2).second.at(0) * percent_second);
+			tf.at(i * 3 + 1) = (samples.at(1).second.at(1) * percent_first) + (samples.at(2).second.at(1) * percent_second);
+			tf.at(i * 3 + 2) = (samples.at(1).second.at(2) * percent_first) + (samples.at(2).second.at(2) * percent_second);
+	    }
+    }
 
     return tf;
 }
@@ -131,6 +152,28 @@ std::vector<unsigned char> applyTF(std::vector<unsigned char> const& image, std:
     std::vector<unsigned char> output(image.size() * 3);
 
     // TODO Implement this
+    for (int i = 0; i < image.size(); ++i)
+    {
+    	int value = image.at(i);
+    	int index = value / 2;
+    	bool is_uneven = value % 2;
+
+    	if (is_uneven) {
+	    	unsigned char r1 = tf.at(index * 3 + 0);
+	    	unsigned char r2 = tf.at(index * 3 + 0);
+	    	unsigned char g1 = tf.at(index * 3 + 1);
+	    	unsigned char g2 = tf.at(index * 3 + 1);
+	    	unsigned char b1 = tf.at(index * 3 + 2);
+	    	unsigned char b2 = tf.at(index * 3 + 2);
+	    	output.at((i * 3) + 0) = (r1 + r2) / 2;
+	    	output.at((i * 3) + 1) = (g1 + g2) / 2;
+	    	output.at((i * 3) + 2) = (b1 + b2) / 2;
+    	} else {
+	    	output.at((i * 3) + 0) = tf.at(index * 3 + 0);
+	    	output.at((i * 3) + 1) = tf.at(index * 3 + 1);
+	    	output.at((i * 3) + 2) = tf.at(index * 3 + 2);
+    	}
+    }
 
     return output;
 }
