@@ -9,6 +9,40 @@
 \usepackage{geometry}		
 \geometry{ left=2cm, right=2cm, top=2cm, bottom=4cm, bindingoffset=5mm}
 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{longtable}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{eminence}{RGB}{108,48,130}
+\definecolor{myblue}{RGB}{65,105,225}
+
+
+\lstset{
+	keywordstyle=\color{myblue},  
+	numbers=left,  
+	stringstyle=\color{mymauve},
+	numberstyle=\tiny\color{mygray} ,    
+	commentstyle=\fontsize{9}{13}\itshape\color{mygreen}
+}
+
+\lstset{literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 %{ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+}
+
+
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{hyperref} 
@@ -30,27 +64,27 @@
 
 \section*{Exercise 7.1 - Glyphs}
 \begin{enumerate}
-	\item[Design a)]
+	\item[a)]
 		Humans can recognize patterns and textures, and this approach can illustrate 12 different attributes. 
 		The attributes are displayed via thickness, length and angle of the lines which may be easy to distinguish if there is a great difference but not if there is little difference. 
-		So these glyphs are rather difficult to interpret, but would explain facts of the car scenario. 
-	\item [Design b)]
+		So these glyphs are rather difficult to interpret, but would explain facts of the car scenario.
+		This is suitable for a general overview.  
+	\item [b)]
 		Distances are hard to judge, especially if there is a small distance. 
 		Besides that, these glyphs are easier to compare since all attributes are always at the same place.
 		This visualisation would be appropriate for the car scenario. 	
-	\item[Design c)]
+	\item[c)]
 		Some features may be easier to perceive than others, for example the head eccentricity is easier to distinguish than the nose length or mouth curvature. 
 		But in general, humans are capable of recognizing different faces. 
 		This can encode all 12 attributes, as well. 
 		Therefore, it is possible to describe the car scenario but not as easy to read as the star plots. 
-	\item[Design d)]
+	\item[d)]
 		The advantage of these glyphs is that they can visualise time dependent flows, but this is not important in the described scenario. 
 		Therefore, this glyph design is not suitable for the car scenario. 
 \end{enumerate}
 
 \newpage
 \section*{Exercise 7.2 - Isolines}
-
 \begin{enumerate}
 	\item[1:] calculate function values according to formula \\
 	 
@@ -88,7 +122,7 @@
 		
 	\item[2:] find position of intersection on edge by linear interpolation \\
 		
-			$x = \dfrac{(f_{2} - c) \cdot x_{1} + (c - f_{1}) \cdot x_{2}}{(f_{2} - f_{1})}$\\
+			%$x = \dfrac{(f_{2} - c) \cdot x_{1} + (c - f_{1}) \cdot x_{2}}{(f_{2} - f_{1})}$\\
 			
 			%$f_{1} = 1.8; f_{2} = -1.3; x_{1} = -1.5; x_{2} = -0.5$\\
 			$ x_{1} = \dfrac{(-1.3 - 0) \cdot -1.5 + (0 - 1.8) \cdot -0.5}{(-1.3 - 1.8)} = \dfrac{1.95 + 0.9}{-3.1} = -0.91935$\\ 
@@ -116,14 +150,24 @@
 					
 			\begin{figure}[h!]
 				\centering 
-				\includegraphics[width=13cm]{7_2_2_2.pdf}
+				\includegraphics[width=\linewidth]{7_2_2_2.pdf}
 				\caption{isolines: blue}
 				\label{}
 			\end{figure}
 			
 \end{enumerate}
 
+\clearpage
+%\newpage
+\textbf{analytical solution:} \\
 
+\lstinputlisting[language=Python]{analyticalisolines.py}
+\begin{figure}[h!]
+	\centering 
+	\includegraphics[width=13cm]{analytical.png}
+	\caption{isolines for f = 0: dark blue straight lines}
+	\label{}
+\end{figure}
 
 
 
