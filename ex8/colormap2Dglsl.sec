@@ -1,0 +1,30 @@
+float create2DscalarData(in float alpha, in vec2 res, in vec2 texCoord)
+{
+    //!!! ADD Codes HERE!!!//
+    // TODO: implement the equations for the 2D scalar filed
+    return 1.0;
+}
+
+vec4 colormap(float s)
+{
+    //!!! ADD Codes HERE!!!//
+    // TODO: implement the color map
+    return vec4(s);
+}
+
+void mainImage(out vec4 fragColor, in vec2 fragCoord)
+{
+    vec2 uv = fragCoord.xy / iResolution.xy;
+
+    // Time variable
+    float alpha = sin(iTime);
+    vec2 res = iResolution.xy / 20.0;
+    vec2 texCoord = uv;
+
+    // Get the 2D scalar value
+    float s = create2DscalarData(alpha, res, texCoord);
+    // Get the color from the color map
+    vec4 color = colormap(s);
+    // Set the fragment color
+    fragColor = color;
+}
