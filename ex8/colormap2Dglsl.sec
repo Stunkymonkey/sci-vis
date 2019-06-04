@@ -2,14 +2,33 @@ float create2DscalarData(in float alpha, in vec2 res, in vec2 texCoord)
 {
     //!!! ADD Codes HERE!!!//
     // TODO: implement the equations for the 2D scalar filed
-    return 1.0;
+    return abs((sin(alpha) + 1.f) * sin(res.x * texCoord.x + cos(alpha)) * cos(res.y * texCoord.y + sin(alpha)));
 }
 
 vec4 colormap(float s)
 {
     //!!! ADD Codes HERE!!!//
     // TODO: implement the color map
-    return vec4(s);
+    float range = 0.5;
+    float r;
+    float g;
+    float b;
+    if (s < 0.5) {
+        float percent_second = s / range;
+        float percent_first = 1.f - percent_second;
+
+        r = (0.f * percent_first) + (1.f * percent_second);
+        g = (0.f * percent_first) + (1.f * percent_second);
+        b = (1.f * percent_first) + (1.f * percent_second);
+    } else {
+        float percent_second = (s - 0.5) / range;
+        float percent_first = 1.f - percent_second;
+
+        r = (1.f * percent_first) + (1.f * percent_second);
+        g = (1.f * percent_first) + (0.f * percent_second);
+        b = (1.f * percent_first) + (0.f * percent_second);
+    }
+    return vec4(r, g, b, s);
 }
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
