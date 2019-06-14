@@ -63,31 +63,42 @@
 
 
 \section*{Exercise 8.1 - Asymptotic Decider}
-
-Midpoint:
-
+We assume that the Isoline should be drawn at f(x) = 0 \\ \linebreak
+Interpolate values: \\
+$x_{1} = \dfrac{(-40 - 0) \cdot 0 + (0 - 80) \cdot 1}{-40 - 80}  = \dfrac{-80}{-120} = 0.66$\\
+$y_{2} = \dfrac{(8 - 0) \cdot 1 + (0 + 40) \cdot 0}{8 + 40} = \dfrac{8}{48} = 0.17$ \\
+$y_{3} = \dfrac{(-40 - 0) \cdot 1 + (0 - 80) \cdot 0}{-40 - 80} = \dfrac{-40}{-120} = 0.33 $\\
+$x_{4} = \dfrac{(8 - 0) \cdot 0 + (0 + 40) \cdot 1}{8 + 40} = \dfrac{40}{48} = 0.834$ \\ \linebreak
+%$x = \dfrac{(f_{2} - c) \cdot x_{1} + (c - f_{1}) \cdot x_{2}}{(f_{2} - f_{1})}$
+Result: \\
+\begin{center}
+	\includegraphics[width=10cm]{8T1_1.png}
+\end{center}
+Midpoint (M):
 \begin{align*}
 	c &= \dfrac{1}{4}*(f_{i,j} + f_{i+1,j} + f_{i,j+1} + f_{i+1,j+1})\\
 	&= \dfrac{1}{4}*(-40 + 8 + 80 -40)\\
 	&= 2
 \end{align*}
-
+\newpage
 Because $ c > 0 $, our lines are drawn the following:\\
-Our top root is connected to our left root, and our bottom root is connected to our right root. We now
-just need to calculate our asymptotes:
-
-\begin{align*}
-x_c &= \dfrac{f(0)}{f(1) - f(0)}\\
-x_c(SouthWest, SouthEast) &= \dfrac{5}{6}\\
-x_c(NorthWest, NorthEast) &= \dfrac{2}{3}\\
-x_c(NorthEast, SouthEast) &= \dfrac{1}{6}\\
-x_c(NorthWest, SouthWest) &= \dfrac{1}{3}
-\end{align*}
+\begin{center}
+	\includegraphics[width=10cm]{8T1_M.png}
+\end{center}
+We now just need to calculate the f value at the intersection of our asymptotes ($S_{\alpha}, T_{\alpha}$): (see Nielson: The asymptotic decider: resolving the ambiguity in marching cubes.)\\  \linebreak
+$f(S_{\alpha}, T_{\alpha})  = \dfrac{f_{00} \cdot f_{11} + f_{10} \cdot f_{01}}{f_{00} + f_{11} - f_{01} - f_{10}} = \dfrac{-40 \cdot -40 + 8 \cdot 80}{-40 + -40 - 80 - 8} = \dfrac{2240}{-168} = -13.34$ \\ \linebreak
+$S_{\alpha} = \dfrac{f_{00}-f_{01}}{f_{00} + f_{11} - f_{01} - f_{10}} =\dfrac{-40 - 80}{-40 + (-40) - 80 -8} = \dfrac{-120}{-168} = 0.714$\\ \linebreak
+$T_{\alpha} = \dfrac{f_{00}-f_{10}}{f_{00} + f_{11} - f_{01} - f_{10}} = \dfrac{-40 - 8}{-40 + (-40) - 80 -8} = \dfrac{-48}{-168} = 0.286$\\ \linebreak
+Result: \\
+\begin{center}
+	\includegraphics[width=10cm]{8T1_A.png}
+	
+\end{center}
 
 \section*{Exercise 8.2 - Octrees}
 
 32bit floating point $\rightarrow$ 4bytes for each voxel\\
-only the last layer needs to store these voxels wich contains $ 500*500*200 = 50.000.000 $ nodes
+only the last layer needs to store these voxels which contains $ 500*500*200 = 50.000.000 $ nodes
 \begin{align*}
 8^x \leq 50.000.000 \Rightarrow x &= 9\\
 layer_{9} &= 8^9 = 134.217.728 \text{ leaves}\\
