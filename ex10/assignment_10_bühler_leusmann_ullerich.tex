@@ -45,7 +45,9 @@
 \usepackage{xcolor}
 \usepackage{hyperref} 
 \usepackage{fancyhdr}
-\usepackage{amsmath}											
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{enumitem}										
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{2973140 - Felix Bühler  \\ 2893121 - Jan Leusmann \\  3141241 - Jamie Ullerich}
@@ -60,29 +62,45 @@
 \thispagestyle{fancy}
 
 
-\section*{Exercise 10. 1
-Pre- and Post-Classification}
+\section*{Exercise 10.1 Pre- and Post-Classification}
 
-\section*{Exercise 10. 2
-Composition Schemes in Direct Volume Rendering}
+\begin{enumerate}
+	\item 
+	\begin{minipage}{\linewidth}
+		\centering
+		\includegraphics[width=10cm]{example-image-a}
+		\captionof{figure}{pre-classification}
+	\end{minipage}
+	
+	\item 
+		\begin{minipage}{\linewidth}
+			\centering
+			\includegraphics[width=10cm]{example-image-b}
+			\captionof{figure}{post-classification}
+		\end{minipage}
+	\item Post-classification is more appropriate.
+\end{enumerate}
+
+\newpage
+\section*{Exercise 10.2 Composition Schemes in Direct Volume Rendering}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{1}
+	\includegraphics[width=0.62\linewidth]{1}
 	\caption{Accumulation}
 	\label{fig:1}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{2}
+	\includegraphics[width=0.62\linewidth]{2}
 	\caption{Max. intensity projection}
 	\label{fig:2}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.7\linewidth]{3}
+	\includegraphics[width=0.62\linewidth]{3}
 	\caption{Average intensity}
 	\label{fig:3}
 \end{figure}
