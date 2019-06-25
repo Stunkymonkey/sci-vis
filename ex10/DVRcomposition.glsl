@@ -153,7 +153,9 @@ void accumulation(float value, float sampleRatio, inout vec4 composedColor)
 	color.a = opacityCorrection(color.a, sampleRatio);
 
 	// TODO: Implement Front-to-back blending
-	composedColor = vec4(0.5);
+	//composedColor = vec4(0.5);
+    composedColor = composedColor + (1.f - composedColor.a) * color * color.a;
+    composedColor.a = composedColor.a + (1.f - composedColor.a) * color.a;
 }
 
 /**
@@ -167,6 +169,9 @@ void accumulation(float value, float sampleRatio, inout vec4 composedColor)
 void maximumIntensity(float value, inout float maxIntense)
 { 
     // TODO: Record maximum intensity along the ray.
+    if (value > maxIntense) {
+        maxIntense = value;
+    }
 }
 
 /**
@@ -180,6 +185,8 @@ void maximumIntensity(float value, inout float maxIntense)
 void sumIntensity(float value, inout float sumIntense, inout int hitCount)
 {
     // TODO: sum up the intensity along the ray.     
+    sumIntense += value;
+    hitCount += 1;
 }
 
 /**
@@ -269,14 +276,18 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     if (technique == 0)
     {
         // TODO: color for accumulation
+        // done
     }
     else if (technique == 1)
     {
         // TODO: color for max. intensity projection
+        finalColor = vec4(maxIntense);
     }
     else if (technique == 2)
     {
         // TODO: color for average intensity
+        float intensity = sumIntense / float(hitCount);
+        finalColor = vec4(intensity);
     }
 
     fragColor = finalColor * finalColor.a + (1.0 - finalColor.a) * background;
