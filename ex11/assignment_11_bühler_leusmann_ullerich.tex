@@ -67,6 +67,44 @@
 
 
 \section*{Exercise 11. 1 - Splatting}
+\begin{enumerate}
+	\item \begin{align*}
+	splat(p) &= \dfrac{1}{\sqrt{\pi}} * e^{-\frac{p^2}{2}}\\
+	splat(1.5) &= \dfrac{1}{\sqrt{\pi}} * e^{-\frac{1.5^2}{2}} = 0.183166\\
+	splat(0.5) &= \dfrac{1}{\sqrt{\pi}} * e^{-\frac{0.5^2}{2}} = 0.4978956\\
+	splat(-0.5) &= \dfrac{1}{\sqrt{\pi}} * e^{-\frac{-0.5^2}{2}} = 0.4978956\\
+	splat(-1.5) &= \dfrac{1}{\sqrt{\pi}} * e^{-\frac{-1.5^2}{2}} = 0.183166
+	\end{align*}
+	\item \begin{align*}
+		f(x_0) &= 3\\
+		f(x_1) &= 6\\
+		f(x_2) &= 1\\
+		luminance_{x_0} &= 1\\
+		luminance_{x_1} &= 0\\
+		luminance_{x_2} &= 4\\
+		\alpha_{x_0} &= 0.4\\
+		\alpha_{x_1} &= 0.8\\
+		\alpha_{x_2} &= 0.3\\
+		\\
+		x_{0_{splat(1.5)}} = x_{0_{splat(-1.5)}} &= 0.183166 * 1 * 0.4 = 0.0732664\\
+		x_{0_{splat(0.5)}} = x_{0_{splat(-0.5)}} &= 0.4978956 * 1  * 0.4 = 0.19915824\\
+		x_{1_{splat(1.5)}} = x_{1_{splat(-1.5)}} &= 0.183166 * 0 * 0.8 = 0\\
+		x_{1_{splat(0.5)}} = x_{1_{splat(-0.5)}} &= 0.4978956 * 0 * 0.8 = 0\\
+		x_{2_{splat(1.5)}} = x_{2_{splat(-1.5)}} &= 0.183166 * 4 * 0.3 = 0.2197992\\
+		x_{2_{splat(0.5)}} = x_{2_{splat(-0.5)}} &= 0.4978956 * 4 * 0.3  = 0.59747472\\
+	\end{align*}
+	\item due to the fact, that $ x_1 $ has 0 luminance it could be omitted but will be included.
+	\begin{align*}
+	viewplane(1.5) &= x_{0_{splat(-1.5)}} = 0.0732664\\
+	viewplane(2.5) &= x_{0_{splat(-0.5)}} = 0.19915824\\
+	viewplane(3.5) &= x_{2_{splat(-1.5)}} + x_{0_{splat(0.5)}} = 0.2197992 + 0.19915824 = 0.41895744\\
+	viewplane(4.5) &= x_{2_{splat(-0.5)}} + x_{1_{splat(-1.5)}} + x_{0_{splat(1.5)}} = 0.59747472 + 0 + 0.19915824 = 0.79663296\\
+	viewplane(5.5) &= x_{2_{splat(0.5)}} + x_{1_{splat(-0.5)}} = 0.59747472 + 0 = 0.59747472\\
+	viewplane(6.5) &= x_{2_{splat(1.5)}} + x_{1_{splat(0.5)}} = 0.2197992 + 0 = 0.2197992\\
+	viewplane(7.5) &= x_{1_{splat(1.5)}} = 0\\
+	\end{align*}
+\end{enumerate}
+
 
 \newpage
 \section*{Exercise 11. 2 - Meshed Polyhedra Visibility Ordering (MPVO)}
