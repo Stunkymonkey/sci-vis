@@ -1,0 +1,1 @@
+ 0.5 (b) is a curvilinear grid. You could have discussed topology, geometry, and storage requirements. 1 1 4.5 foo->Initialize() missing. Mixed theta and phi. Use atan2 for phi. Use set and get macro for the property. 

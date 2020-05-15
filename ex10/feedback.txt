@@ -1,0 +1,1 @@
+4 1. There cannot be any steps different to 0 or 0.6 in the plot. (-1) 3. The result of the post-classification is closer to the original signal (applying the transfer function to the continous signal) and you are showing that the post-classification plot also contains values different from 0 and 0.6. (-1) 2 Shader does not compile on ShaderToy. 

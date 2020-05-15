@@ -1,0 +1,1 @@
+2 2 createTF: Samples vector could have more than 3 entries. applyTF: Missing linear interpolation while applying TF. 5 1. Text is ok, but the provided equation does not reflect that. 3. sinc would be ok for time domain, but we are in frequency domain so box filter. 

@@ -1,0 +1,1 @@
+ 1,5 data acquisition and rendering step too brief 2,5 2 wrong entries 4 Total: 8/9 

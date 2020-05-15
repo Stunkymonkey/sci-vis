@@ -1,0 +1,2 @@
+11.1: You applied the transfer function directly to the given unweighted values, not the weighted ones, resulting in wrong final values (-2P). In step 3 there was no real compositing done, but a mere addition of values (-1P). 3P/6P
+11.2: There was no back-to-front breadth-first ordering given by you (-2P). 4P/6P 

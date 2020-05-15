@@ -1,0 +1,2 @@
+3.1: A code example was not necessary, but the solution is correct. 2P/2P
+3.2: You reversed the intended direction (bbmax to bbmin instead of bbmin to bbmax) during the cell border vertex calculation which lead to a more complicated index calculation. Nonetheless correct. 8P/8P 
